@@ -35,3 +35,63 @@ El objetivo es realizar la construcción de endpoint clase Projects que represen
 * Es importante que existan las validaciones de datos, ejemplo si se solicita un proyecto que no existe.
 
 ## Muchas gracias por tu tiempo!
+
+
+
+#################################################################################################################
+
+# Desafío de Backend - Postulación a Primer Empleo IT
+
+¡Hola, soy Gisella y este es mi repositorio de desafío de backend Challenge! 🚀
+
+## Descripción del Desafío
+
+Este proyecto es parte de mi proceso de postulación a un puesto como desarrolladora backend. El desafío consiste en crear una aplicación backend que gestiona proyectos y usuarios, con relaciones entre ellos. Mi objetivo es demostrar mis habilidades en el desarrollo de aplicaciones web utilizando tecnologías como Node.js, Express.js, Sequelize (ORM), y PostgreSQL.
+
+## Características Clave
+
+- Creación, lectura, actualización y eliminación (CRUD) de proyectos.
+- Asignación de usuarios a proyectos.
+- Gestión de usuarios y proyectos.
+- Paginación de proyectos.
+- API RESTful para acceder a los datos.
+
+## Tecnologías Utilizadas
+
+- Node.js
+- Express.js
+- Sequelize (ORM)
+- PostgreSQL
+- Swagger (documentación de API)
+- Otros módulos y bibliotecas de Node.js según sea necesario.
+
+## Instrucciones de Uso
+
+1. Clona este repositorio en tu máquina local.
+2. Instala las dependencias utilizando `npm install`.
+3. Configura una base de datos PostgreSQL y actualiza la configuración en el archivo `.env`.
+4. Ejecuta el servidor utilizando `npm start`.
+5. Accede a la documentación de la API en `https://pm-backend-challenge.onrender.com/api-docs/`.
+
+## Documentación de la API
+
+La documentación de la API se encuentra disponible en [Swagger](https://pm-backend-challenge.onrender.com/api-docs/) y proporciona detalles sobre cómo interactuar con los endpoints de la aplicación.
+
+## Contribuir
+
+Si deseas contribuir a este proyecto, ¡te animo a hacerlo! Puedes abrir problemas, proponer mejoras o enviar solicitudes de extracción.
+
+## Autor
+
+- Nombre: Gisella Gonzalez
+- Portafolio: https://portfolio-gkallisti.vercel.app/
+- LinkedIn: https://www.linkedin.com/in/gisella-gkallisti/
+- Correo Electrónico: gg.kallisti@gmail.com
+
+## Agradecimientos
+
+Me gustaría agradecer a German Cugliandolo por brindarme la oportunidad de presentar mi desafío de backend como parte de mi proceso de postulación. ¡Espero con gusto la posibilidad de trabajar juntos!
+
+---
+
+¡Gracias por visitar mi repositorio! Si tienes alguna pregunta o comentario, ¡no dudes en ponerte en contacto conmigo! 😊 Que tengas un hermoso dia!
