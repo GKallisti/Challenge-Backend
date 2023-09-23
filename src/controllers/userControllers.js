@@ -1,4 +1,4 @@
-const { User} = require("../db");
+const { Project, User } = require("../db");
 
 
 async function createUser (req, res) {
@@ -28,7 +28,34 @@ async function createUser (req, res) {
     }
   };
 
+  async function getUsers() {
+    try {
+        const users = User.findAll({
+          include: Project
+        })
+        return users
+    } catch (error) {
+        throw new Error('Users not found')
+    }
+}
+
+const getallUsers = async (req, res) => {
+  try {
+      const users = await getUsers()
+      if (users.length === 0) {
+          res.status(400).json({ error: 'No user found' })
+      } else {
+          res.status(200).json(users)
+      }
+  } catch (error) {
+    console.log(error)
+      res.status(500).json({ error: error.message })
+  }
+}
+  
+
   module.exports = {
-    createUser
+    createUser,
+    getallUsers
   };
   

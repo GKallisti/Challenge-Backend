@@ -37,15 +37,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Project, User } = sequelize.models;
 
-
-Project.belongsToMany(User, {  through: "ProjectManager",
-onDelete: "CASCADE" })
-
-Project.belongsToMany(User, {  through: "AssignedTo",
-onDelete: "CASCADE" })
-
-
-
+Project.hasMany(User, {foreignKey: 'ProjectId'})
+Project.belongsTo(User, {foreignKey: 'Project_manager_id'})
+User.belongsTo(Project, {foreignKey: 'Project_manager_id'})
+User.belongsTo(Project)
 
 module.exports = {
    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

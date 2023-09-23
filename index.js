@@ -4,7 +4,6 @@ require("dotenv").config();
 const { PORT } = process.env;
 const { swaggerDocs } = require('./src/routes/swagger.js');
 
-
 conn.sync({ alter: true }).then(() => {
   server.listen( PORT, () => {
     console.log(`%s listening at ${PORT}`); 
