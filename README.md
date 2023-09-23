@@ -79,6 +79,22 @@ Este proyecto es parte de mi proceso de postulación a un puesto como desarrolla
 
 La documentación de la API se encuentra disponible en [Swagger](https://pm-backend-challenge.onrender.com/api-docs/) y proporciona detalles sobre cómo interactuar con los endpoints de la aplicación.
 
+
+Documentacion y datos express:
+
+Actualmente en la base de datos hay tres usuarios (Usuario de prueba N1, N2 y N3) y tres proyectos creados.
+El proyecto N1 tiene como project manager al usuario N1 Y tiene asignados como usuarios en trabajo al usuario 2 y 3 
+El proyecto N2 tiene como project manager al usuario N2 y no tiene usuarios asignados
+El proyecto N3 No tiene project manager y tiene asignados como usuarios en trabajo al 1 y 2
+
+Usando las rutas PUT'/projects/update/:id' Y POST '/projects/assign-users'
+Pueden ser asignados los ids de los usuarios como usuarios de trabajo o como project managers.
+Se puede obtener la informacion de todos los proyectos mediante un GET '/projects'
+Y ademas se puede obtener toda la informacion de los usuarios mediante un GET '/allusers'
+
+
+
+
 ## Contribuir
 
 Si deseas contribuir a este proyecto, ¡te animo a hacerlo! Puedes abrir problemas, proponer mejoras o enviar solicitudes de extracción.
