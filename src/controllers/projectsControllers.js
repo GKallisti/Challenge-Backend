@@ -57,7 +57,6 @@ async function getProjectId(id) {
   }
 }
 
-
 const getProjectById = async (req, res) => {
   const { id } = req.params
   if (!id) res.status(400).json({ error: 'Missing id' })
@@ -72,7 +71,6 @@ const getProjectById = async (req, res) => {
       res.status(500).json({ error: error.message })
   }
 }
-
 
 async function createProject(req, res) {
   const { project_name, description, state_project, project_manager_id } = req.body;
@@ -126,7 +124,6 @@ async function updateProject(req, res) {
   }
 }
 
-
   async function deleteProject(req, res) {
     const { id } = req.params;
     try {
@@ -140,9 +137,8 @@ async function updateProject(req, res) {
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
-  }
+}
  
-
 async function assign( projectId, userId) {
   try {
       const project = await Project.findByPk(projectId)
