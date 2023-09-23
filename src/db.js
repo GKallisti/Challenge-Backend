@@ -5,7 +5,7 @@ const path = require('path');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/project`,
+   `postgres://projectsdbchallenge_user:tzseeoYjoao97H1wlp2NlGCMBugKhMkl@dpg-ck6etk9i0euc73buq26g-a/projectsdbchallenge`,
    {
       logging: false, 
       native: false, 
@@ -43,6 +43,6 @@ User.belongsTo(Project, {foreignKey: 'Project_manager_id'})
 User.belongsTo(Project)
 
 module.exports = {
-   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
+   ...sequelize.models, 
+   conn: sequelize, 
 };

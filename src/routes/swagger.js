@@ -13,7 +13,7 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:3001",
+                url: "https://pm-backend-challenge.onrender.com",
             },
         ],
     },
@@ -30,7 +30,7 @@ const swaggerDocs = (app, port) => {
         res.send(specs);
     })
 }
-console.log("Documentacion Lista en http://localhost:3001/api-docs !");
+console.log("Documentacion Lista en https://pm-backend-challenge.onrender.com/api-docs !");
 
 module.exports = {
     swaggerDocs
