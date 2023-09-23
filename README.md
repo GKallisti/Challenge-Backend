@@ -67,11 +67,13 @@ Este proyecto es parte de mi proceso de postulación a un puesto como desarrolla
 
 ## Instrucciones de Uso
 
-1. Clona este repositorio en tu máquina local.
+1. De ser necesario, clona este repositorio en tu máquina local.
 2. Instala las dependencias utilizando `npm install`.
 3. Configura una base de datos PostgreSQL y actualiza la configuración en el archivo `.env`.
 4. Ejecuta el servidor utilizando `npm start`.
 5. Accede a la documentación de la API en `https://pm-backend-challenge.onrender.com/api-docs/`.
+6. Accede al deploy ejecutandose en Render desde `https://pm-backend-challenge.onrender.com`.
+
 
 ## Documentación de la API
 
