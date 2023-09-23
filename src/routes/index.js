@@ -188,17 +188,17 @@ router.delete('/delete/:id', deleteProject);
  * @swagger
  * /projects/{id}:
  *   put:
- *     summary: Actualiza un proyecto por su ID.
+ *     summary: Actualizar un proyecto existente.
+ *     description: Actualiza los detalles de un proyecto existente. Si se proporciona `project_manager_id`, se asignará al proyecto; de lo contrario, se eliminará cualquier asignación existente.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID del proyecto que se actualizará.
+ *         description: ID del proyecto que se va a actualizar.
  *         schema:
- *           type: string
+ *           type: integer
  *     requestBody:
  *       required: true
- *       description: Datos actualizados del proyecto.
  *       content:
  *         application/json:
  *           schema:
@@ -214,46 +214,25 @@ router.delete('/delete/:id', deleteProject);
  *                 type: string
  *                 description: Estado del proyecto.
  *               project_manager_id:
- *                 type: string
- *                 description: ID del gerente del proyecto.
+ *                 type: integer
+ *                 description: ID del gerente del proyecto. Si se proporciona, se asignará al proyecto; de lo contrario, se eliminará cualquier asignación existente.
  *     responses:
  *       200:
- *         description: Proyecto actualizado exitosamente.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   description: Mensaje de éxito.
+ *         description: Proyecto actualizado con éxito.
+ *       400:
+ *         description: Datos de entrada no válidos.
  *       404:
- *         description: El proyecto no existe.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Descripción del error.
+ *         description: Proyecto no encontrado.
  *       500:
- *         description: Error interno del servidor.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Descripción del error.
+ *         description: Error al actualizar el proyecto.
  */
 router.put('/projects/update/:id', updateProject);
 /**
  * @swagger
  * /projects:
  *   post:
- *     summary: Crea un nuevo proyecto.
+ *     summary: Crear un nuevo proyecto.
+ *     description: Crea un nuevo proyecto con los detalles proporcionados. Si se proporciona `project_manager_id`, se asignará al proyecto.
  *     requestBody:
  *       required: true
  *       content:
@@ -271,35 +250,15 @@ router.put('/projects/update/:id', updateProject);
  *                 type: string
  *                 description: Estado del proyecto.
  *               project_manager_id:
- *                 type: string
- *                 description: ID del usuario que será el gerente del proyecto.
+ *                 type: integer
+ *                 description: ID del gerente del proyecto. Si se proporciona, se asignará al proyecto.
  *     responses:
  *       201:
- *         description: Proyecto creado exitosamente.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
+ *         description: Proyecto creado con éxito.
  *       400:
- *         description: Solicitud incorrecta debido a datos faltantes o inválidos.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Descripción del error.
+ *         description: Datos de entrada no válidos.
  *       500:
- *         description: Error interno del servidor.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Descripción del error.
+ *         description: Error al crear el proyecto.
  */
 router.post('/projects/create', createProject);
 /**

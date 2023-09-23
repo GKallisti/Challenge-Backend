@@ -76,19 +76,24 @@ async function createProject(req, res) {
   const { project_name, description, state_project, project_manager_id } = req.body;
 
   try {
+    let project;
     
-    const project = await Project.create({
-      project_name,
-      description,
-      state_project,
-      
-    });
-
-    const project_manager = await User.findByPk(project_manager_id)
-    await project_manager.setProject(project)
-
-    await project.setUser(project_manager_id)
-
+    if (project_manager_id) {
+      const project_manager = await User.findByPk(project_manager_id);
+      project = await Project.create({
+        project_name,
+        description,
+        state_project,
+      });
+      await project_manager.setProject(project)
+      await project.setUser(project_manager_id)
+      } else {
+      project = await Project.create({
+        project_name,
+        description,
+        state_project,
+      });
+    }
 
     res.status(201).json({ message: "Project created successfully", project });
   } catch (error) {
@@ -96,12 +101,11 @@ async function createProject(req, res) {
     return res.status(500).json({ message: "Failed to create Project" });
   }
 }
-
 async function updateProject(req, res) {
   const { id } = req.params;
-  const { project_name, description, state_project, project_manager_id, } = req.body;
+  const { project_name, description, state_project, project_manager_id } = req.body;
   try {
-     const project = await Project.findByPk(id);
+    const project = await Project.findByPk(id);
 
     if (!project) {
       return res.status(404).json({ message: "Project not found" });
@@ -110,12 +114,17 @@ async function updateProject(req, res) {
     project.project_name = project_name;
     project.description = description;
     project.state_project = state_project;
+
+    if (project_manager_id) {
+      const project_manager = await User.findByPk(project_manager_id);
+      await project_manager.setProject(project);
+      await project.setUser(project_manager_id);
+    } else {
+      await project.setUser(null);
+
+    }
+
     await project.save();
-
-    const project_manager = await User.findByPk(project_manager_id)
-    await project_manager.setProject(project)
-    await project.setUser(project_manager_id)
-
 
     res.json({ message: "Project updated successfully" });
   } catch (error) {
