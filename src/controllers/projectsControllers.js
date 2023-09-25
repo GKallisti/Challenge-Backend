@@ -1,4 +1,6 @@
 const { Project, User } = require("../db");
+const { Op } = require("sequelize");
+
 
 
 async function getProjects(req, res) {
@@ -58,19 +60,37 @@ async function getProjectId(id) {
 }
 
 const getProjectById = async (req, res) => {
-  const { id } = req.params
-  if (!id) res.status(400).json({ error: 'Missing id' })
+  const { id } = req.params;
+  const { project_name } = req.body; 
+
   try {
-      const project = await getProjectId(id)
-      if (!project || project === null) {
-          res.status(400).json({ error: 'No project found' })
-      } else {
-          res.status(200).json(project)
-      }
+    let project;
+    
+    if (id) {
+      project = await getProjectId(id);
+    } else if (project_name) {
+      project = await Project.findOne({
+        where: {
+          project_name: {
+            [Op.iLike]: `%${project_name}%`,
+          },
+        },
+        include: User,
+      });
+    } else {
+      res.status(400).json({ error: 'Missing id or projectName' });
+      return;
+    }
+
+    if (!project || project === null) {
+      res.status(400).json({ error: 'No project found' });
+    } else {
+      res.status(200).json(project);
+    }
   } catch (error) {
-      res.status(500).json({ error: error.message })
+    res.status(500).json({ error: error.message });
   }
-}
+};
 
 async function createProject(req, res) {
   const { project_name, description, state_project, project_manager_id } = req.body;
